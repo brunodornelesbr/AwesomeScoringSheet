@@ -15,41 +15,45 @@ struct ScoringSheet: View {
     @State var scrollOffset: CGPoint = .zero
     @State private var scrollViewContentSize: CGSize = .zero
     @Namespace var scrollSpace
-    
+
     @FocusState var focusState: UUID?
     var body: some View {
-        ZStack {
-            Image("MarsBack")
-                .resizable(resizingMode: .stretch)
-                .ignoresSafeArea()
-            
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, maxHeight: .infinity)
-            
-            GeometryReader {_ in
-                VStack {
-                    HStack(alignment: .top,spacing: 0) {
-                        leftHeaders()
-                        rightHeaders()
+        NavigationStack {
+            ZStack {
+                Color(red: 223 / 255, green: 246 / 255, blue: 221 / 255)
+                    .ignoresSafeArea()
+
+                GeometryReader {_ in
+                    VStack {
+                        HStack(alignment: .top, spacing: 0) {
+                            leftHeaders()
+                            rightHeaders()
+                        }
                     }
                 }
             }
-        }
-        .toolbar {
-            ToolbarItemGroup(placement: .keyboard) {
-                HStack {
-                    Button("+/-") {
-                        model.sumOrMinus(currentFocus: focusState)
-                    }
-                    
-                    Spacer()
-                
-                    Button("NEXT", systemImage: "arrow.forward.to.line") {
-                        DispatchQueue.main.async {
-                            withAnimation(.bouncy) {
-                                focusState = model.getNextFocus(currentFocus: focusState)?.id
+            .toolbar {
+                ToolbarItemGroup(placement: .keyboard) {
+                    HStack(alignment: .center) {
+                        Button(action: { model.sumOrMinus(currentFocus: focusState) }, label: {
+                            HStack {
+                                Image("mathematics")
+                                    .resizable()
+                                    .frame(width: 30, height: 30)
                             }
-                        }
-                    }.labelStyle(.titleAndIcon)
+                            .frame(width: 60, height: 40)
+                        })
+
+                        Spacer()
+
+                        Button("NEXT", systemImage: "arrow.forward.to.line") {
+                            DispatchQueue.main.async {
+                                withAnimation(.bouncy) {
+                                    focusState = model.getNextFocus(currentFocus: focusState)?.id
+                                }
+                            }
+                        }.labelStyle(.titleAndIcon)
+                    }
                 }
             }
         }
@@ -60,24 +64,38 @@ struct ScoringSheet: View {
             value += nextValue()
         }
     }
-    
-    
-    
+
     func leftHeaders() -> some View {
         VStack(alignment: .leading, spacing: 0) {
-            Color.clear
+            ZStack {
+                NavigationLink(destination: FinalScoreView()) {
+                    Button("Calculate Final Score") { }
+                    .minimumScaleFactor(0.1)
+                    .buttonStyle(.borderedProminent)
+                    .shadow(radius: 2)
+                    .frame(
+                        width: 90,
+                        height: rowHeight - 10
+                    )
+                    .background(Color.clear)
+                }
                 .frame(
-                    width: 100,
-                    height: rowHeight
+                    width: 90,
+                    height: rowHeight - 10
                 )
-                .opacity(0.1)
-            
+            }
+            .frame(
+                width: 100,
+                height: rowHeight
+            )
+
             ScrollView(.vertical) {
                 VStack(spacing: 0) {
                     ForEach($model.categories, id: \.self) { category in
                         CategoryHeader(category: category)
-                            .frame( width: 100,height: rowHeight
-                            )}
+                            .frame( width: 100, height: rowHeight
+                            )
+                    }
                 }
                 .offset(y: scrollOffset.y)
             }
@@ -86,7 +104,7 @@ struct ScoringSheet: View {
             hideKeyboard()
         }
     }
-    
+
     func rightHeaders() -> some View {
         VStack(spacing: 0) {
             ScrollView(.horizontal) {
@@ -97,7 +115,7 @@ struct ScoringSheet: View {
                                 width: rowWidth,
                                 height: rowHeight
                             )
-                        
+
                     }
                 }
                 .background(Material.ultraThin, in: RoundedRectangle(cornerRadius: 10))
@@ -106,35 +124,35 @@ struct ScoringSheet: View {
                 .onTapGesture {
                     hideKeyboard()
                 }
-            
+
             ScrollViewReader { proxy in
                 ScrollView([.horizontal, .vertical]) {
                     ZStack {
                         VStack(alignment: .leading, spacing: 0) {
-                                ForEach ($model.categories) { category in
+                                ForEach($model.categories) { category in
                                     CategoryView(category: category, focusState: _focusState, proxy: proxy, rowWidth: rowWidth, rowHeight: rowHeight)
                                 }
-                            }
+                        }
                             .background(GeometryReader { geo in
                                 Color.clear
                                     .onAppear {
                                                                 Task { @MainActor in
                                                                     scrollViewContentSize = geo.size
                                                                 }
-                                                            }
+                                    }
                                     .preference(
                                         key: ScrollViewOffsetPreferenceKey.self,
                                         value: geo.frame(in: .named(scrollSpace)).origin
                                     )
-                        })
+                            })
                     }
                 }
-                .onChange(of:focusState) {
+                .onChange(of: focusState) {
                         withAnimation(.snappy(duration: 2)) {
                             proxy.scrollTo(focusState, anchor: .topLeading)
                         }
-                    }.defaultScrollAnchor(.topLeading)
-               
+                }.defaultScrollAnchor(.topLeading)
+
             }   .frame(
                 maxWidth: scrollViewContentSize.width,
                 maxHeight: scrollViewContentSize.height
@@ -142,15 +160,13 @@ struct ScoringSheet: View {
             .coordinateSpace(name: scrollSpace)
               .onPreferenceChange(ScrollViewOffsetPreferenceKey.self) { value in
                     scrollOffset = value
-                }
+              }
         }
         .frame(
-         maxWidth: scrollViewContentSize.width     )
+         maxWidth: scrollViewContentSize.width)
     }
-    
-    
-}
 
+}
 
 extension ScoringSheet {
     struct PlayerHeader: View {
@@ -162,8 +178,7 @@ extension ScoringSheet {
                     .foregroundColor(Color(player.chosenColor.name()))
                     .frame(width: 30, height: 30)
                     .padding([.top, .leading, .trailing], 4)
-                
-                
+
                 Text(player.name)
                     .font(.callout)
                     .lineLimit(1)
@@ -178,15 +193,15 @@ extension ScoringSheet {
     struct CategoryView: View {
         @Binding var category: Category
         @FocusState var focusState: UUID?
-        
+
         var proxy: ScrollViewProxy
         var rowWidth: CGFloat
         var rowHeight: CGFloat
         var body: some View {
             ZStack {
                 Color(category.colorName)
-                HStack (spacing: 0) {
-                    ForEach ($category.playerScores) { $playerScore in
+                HStack(spacing: 0) {
+                    ForEach($category.playerScores) { $playerScore in
                         ZStack {
                             withAnimation(.easeIn(duration: 10)) {
                                 if focusState == playerScore.id {
@@ -195,18 +210,19 @@ extension ScoringSheet {
                                     Color.clear
                                 }
                             }
-                            TextField("",text: $playerScore.score, prompt: Text("-"))
+                            TextField("", text: $playerScore.score, prompt: Text("-"))
                                 .multilineTextAlignment(.center)
                                 .textFieldStyle(.automatic)
+                                .fontWeight( focusState == playerScore.id ? .bold : .regular)
                                 .keyboardType(.numberPad)
                                 .tint(Color.white)
                                 .focused($focusState, equals: playerScore.id)
                                 .frame(width: rowWidth, height: rowHeight)
-                                .background(focusState == playerScore.id ?           Color(playerScore.player.chosenColor.name()) : Color.clear)
+                                .background(focusState == playerScore.id ? Color(playerScore.player.chosenColor.name()) : Color.clear)
                             .id(playerScore.id)
                             .animation(.default)
                         }
-                            
+
                     }
                 }
             }
@@ -226,7 +242,7 @@ extension ScoringSheet {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let players = [Player(name: "Player 1", chosenColor: .green),
                        Player(name: "Player 2", chosenColor: .yellow),
@@ -236,7 +252,7 @@ struct ContentView_Previews: PreviewProvider {
                                       Player(name: "Player 2", chosenColor: .yellow),
                                       Player(name: "ABA ", chosenColor: .red),
                        Player(name: "New Player with new name which is really big ", chosenColor: .black)]
-        
+
         let categories = [Category(name: "Category 1", odd: true),
                           Category(name: "Two", odd: false),
                           Category(name: "Category 1", odd: true),
@@ -248,30 +264,10 @@ struct ContentView_Previews: PreviewProvider {
                           Category(name: "Category 1", odd: true),
                                             Category(name: "Two", odd: false),
                           Category(name: "Category 1", odd: true),
-                                            Category(name: "Two", odd: false),]
+                                            Category(name: "Two", odd: false) ]
         let model = ScoringSheet.Model(
             players: players, categories: categories)
-        
+
         ScoringSheet(model: model)
     }
-}
-
-private extension CGPoint {
-    static func + (lhs: Self, rhs: Self) -> Self {
-        CGPoint(
-            x: lhs.x + rhs.x,
-            y: lhs.y + rhs.y
-        )
-    }
-
-    static func += (lhs: inout Self, rhs: Self) {
-        lhs = lhs + rhs
-    }
-}
-
-extension View {
-    func hideKeyboard () {
-        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
-    
-}
+ }

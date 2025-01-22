@@ -1,0 +1,24 @@
+{
+  "originHash" : "9dc04cbce5e59d47317f3c582f4bf5a314a73b1f8fdd6f273051531eabf5071a",
+  "pins" : [
+    {
+      "identity" : "debugswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/DebugSwift/DebugSwift.git",
+      "state" : {
+        "revision" : "a5cdece2984da5c26cb9a7c57f9c9533b8eea0d3",
+        "version" : "0.3.9"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "7a3d77f3dd9f91d5cea138e52c20cfceabf352de",
+        "version" : "0.58.2"
+      }
+    }
+  ],
+  "version" : 3
+}

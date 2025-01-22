@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		151304722B0B8D990088E4AA /* Spreadsheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151304712B0B8D990088E4AA /* Spreadsheet.swift */; };
 		151304742B0E81500088E4AA /* ScoringSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151304732B0E81500088E4AA /* ScoringSheetViewModel.swift */; };
+		151B48D32D400FBC00E73378 /* DebugSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 151B48D22D400FBC00E73378 /* DebugSwift */; };
+		15A080822D4122E900A9E7FA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A080812D4122E900A9E7FA /* Extensions.swift */; };
+		15A080842D414F4A00A9E7FA /* FinalScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A080832D414F4A00A9E7FA /* FinalScoreView.swift */; };
 		15CAFD8C2AFAD2D20079789C /* AwesomeScoringSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */; };
-		15CAFD8E2AFAD2D20079789C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD8D2AFAD2D20079789C /* ContentView.swift */; };
+		15CAFD8E2AFAD2D20079789C /* ScoringSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */; };
 		15CAFD902AFAD2D30079789C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFD8F2AFAD2D30079789C /* Assets.xcassets */; };
 		15CAFD942AFAD2D30079789C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFD932AFAD2D30079789C /* Preview Assets.xcassets */; };
 		15CAFD9E2AFAD2D30079789C /* AwesomeScoringSheetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD9D2AFAD2D30079789C /* AwesomeScoringSheetTests.swift */; };
@@ -39,11 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		151304712B0B8D990088E4AA /* Spreadsheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spreadsheet.swift; sourceTree = "<group>"; };
 		151304732B0E81500088E4AA /* ScoringSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringSheetViewModel.swift; sourceTree = "<group>"; };
+		15A080812D4122E900A9E7FA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		15A080832D414F4A00A9E7FA /* FinalScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreView.swift; sourceTree = "<group>"; };
 		15CAFD882AFAD2D20079789C /* AwesomeScoringSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeScoringSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeScoringSheetApp.swift; sourceTree = "<group>"; };
-		15CAFD8D2AFAD2D20079789C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringSheet.swift; sourceTree = "<group>"; };
 		15CAFD8F2AFAD2D30079789C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15CAFD912AFAD2D30079789C /* AwesomeScoringSheet.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AwesomeScoringSheet.entitlements; sourceTree = "<group>"; };
 		15CAFD932AFAD2D30079789C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -62,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				151B48D32D400FBC00E73378 /* DebugSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -106,8 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */,
-				15CAFD8D2AFAD2D20079789C /* ContentView.swift */,
-				151304712B0B8D990088E4AA /* Spreadsheet.swift */,
+				15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */,
+				15A080832D414F4A00A9E7FA /* FinalScoreView.swift */,
+				15A080812D4122E900A9E7FA /* Extensions.swift */,
 				15FD6EC92B04046A00D05AF4 /* ScoringSheet */,
 				15CAFD8F2AFAD2D30079789C /* Assets.xcassets */,
 				15CAFD912AFAD2D30079789C /* AwesomeScoringSheet.entitlements */,
@@ -170,6 +175,7 @@
 				15CAFD842AFAD2D20079789C /* Sources */,
 				15CAFD852AFAD2D20079789C /* Frameworks */,
 				15CAFD862AFAD2D20079789C /* Resources */,
+				15A080802D411B7900A9E7FA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -224,7 +230,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					15CAFD872AFAD2D20079789C = {
 						CreatedOnToolsVersion = 14.2;
@@ -248,6 +254,10 @@
 				Base,
 			);
 			mainGroup = 15CAFD7F2AFAD2D20079789C;
+			packageReferences = (
+				151B48D12D400FBC00E73378 /* XCRemoteSwiftPackageReference "DebugSwift" */,
+				15A0807F2D411B4600A9E7FA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			productRefGroup = 15CAFD892AFAD2D20079789C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,14 +295,36 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15A080802D411B7900A9E7FA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "SWIFT_PACKAGE_DIR=\"${BUILD_DIR%Build/*}SourcePackages/artifacts\"\nSWIFTLINT_CMD=$(ls \"$SWIFT_PACKAGE_DIR\"/swiftlintplugins/SwiftLintBinary/SwiftLintBinary.artifactbundle/swiftlint-*-macos/bin/swiftlint | head -n 1 )\n\nif test -f \"$SWIFTLINT_CMD\" 2>&1\nthen\n    \"$SWIFTLINT_CMD\" --fix\nelse\n    echo \"warning: `swiftlint` command not found - See https://github.com/realm/SwiftLint#installation for installation instructions.\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		15CAFD842AFAD2D20079789C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15CAFD8E2AFAD2D20079789C /* ContentView.swift in Sources */,
+				15A080842D414F4A00A9E7FA /* FinalScoreView.swift in Sources */,
+				15CAFD8E2AFAD2D20079789C /* ScoringSheet.swift in Sources */,
 				15FD6ECC2B04048800D05AF4 /* Player.swift in Sources */,
-				151304722B0B8D990088E4AA /* Spreadsheet.swift in Sources */,
+				15A080822D4122E900A9E7FA /* Extensions.swift in Sources */,
 				15CAFD8C2AFAD2D20079789C /* AwesomeScoringSheetApp.swift in Sources */,
 				151304742B0E81500088E4AA /* ScoringSheetViewModel.swift in Sources */,
 				15FD6ECE2B0404A700D05AF4 /* Category.swift in Sources */,
@@ -366,6 +398,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
@@ -424,6 +457,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -450,6 +484,7 @@
 				CODE_SIGN_ENTITLEMENTS = AwesomeScoringSheet/AwesomeScoringSheet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AwesomeScoringSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -488,6 +523,7 @@
 				CODE_SIGN_ENTITLEMENTS = AwesomeScoringSheet/AwesomeScoringSheet.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"AwesomeScoringSheet/Preview Content\"";
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -521,10 +557,10 @@
 		15CAFDB12AFAD2D40079789C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -544,10 +580,10 @@
 		15CAFDB22AFAD2D40079789C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -567,9 +603,9 @@
 		15CAFDB42AFAD2D40079789C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -589,9 +625,9 @@
 		15CAFDB52AFAD2D40079789C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = B65B7G9L44;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
@@ -648,6 +684,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		151B48D12D400FBC00E73378 /* XCRemoteSwiftPackageReference "DebugSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DebugSwift/DebugSwift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.9;
+			};
+		};
+		15A0807F2D411B4600A9E7FA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		151B48D22D400FBC00E73378 /* DebugSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 151B48D12D400FBC00E73378 /* XCRemoteSwiftPackageReference "DebugSwift" */;
+			productName = DebugSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15CAFD802AFAD2D20079789C /* Project object */;
 }

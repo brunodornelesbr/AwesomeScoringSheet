@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct PlayerScore : Identifiable, Equatable {
-    var id: UUID = UUID()
+struct PlayerScore: Identifiable, Equatable {
+    var id = UUID()
     var player: Player
     var score: String = ""
 }

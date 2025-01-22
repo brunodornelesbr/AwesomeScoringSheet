@@ -9,19 +9,13 @@ import Foundation
 
 struct Player: Identifiable, Hashable {
     var id = UUID()
-    
+
     var name: String
     var chosenColor: Player.Color
-    
-    init(id: UUID = UUID(), name: String, chosenColor: Player.Color) {
-        self.id = id
-        self.name = name
-        self.chosenColor = chosenColor
-    }
-    
+
     enum Color {
         case black, red, blue, yellow, orange, green
-        
+
         func name() -> String {
             switch self {
             case .black:

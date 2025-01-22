@@ -16,9 +16,9 @@ struct AwesomeScoringSheetApp: App {
                            Player(name: "Player 3", chosenColor: .blue),
                            Player(name: "Player 4", chosenColor: .orange),
                            Player(name: "Player 5", chosenColor: .black),
-//                           Player(name: "Player 6", chosenColor: .red),
+                           Player(name: "Player 6", chosenColor: .red)
                           ]
-            
+
             let categories = [Category(name: "TR", odd: true),
                               Category(name: "AWARDS", odd: false),
                               Category(name: "MILESTONES", odd: true),
@@ -29,7 +29,7 @@ struct AwesomeScoringSheetApp: App {
             ]
             let model = ScoringSheet.Model(
                 players: players, categories: categories)
-            
+
             ScoringSheet(model: model)
         }
     }
