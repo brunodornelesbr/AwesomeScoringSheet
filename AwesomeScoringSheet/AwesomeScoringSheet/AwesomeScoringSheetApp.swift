@@ -19,7 +19,7 @@ struct AwesomeScoringSheetApp: App {
                            Player(name: "Player 6", chosenColor: .red)
                           ]
 
-            let categories = [Category(name: "TR", odd: true),
+            var categories = [Category(name: "TR", odd: true),
                               Category(name: "AWARDS", odd: false),
                               Category(name: "MILESTONES", odd: true),
                                                 Category(name: "Two", odd: false),
@@ -29,6 +29,8 @@ struct AwesomeScoringSheetApp: App {
             ]
             let model = ScoringSheet.Model(
                 players: players, categories: categories)
+
+//            FinalScoreView(model: FinalScoreView.Model(game: Game(players: players, categories: categories).mockScores()))
 
             ScoringSheet(model: model)
         }

@@ -57,14 +57,9 @@ extension ScoringSheet {
             }
             return nil
         }
-    }
-}
 
-extension Array {
-    subscript(safe index: Int) -> Element? {
-        guard self.indices.contains(index) else {
-            return nil
+        func getGame() -> Game {
+            return Game(players: players, categories: categories)
         }
-        return self[index]
     }
 }

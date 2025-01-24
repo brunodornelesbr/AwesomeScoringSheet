@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+enum Route {
+    case finalScoringView
+}
 
 struct ScoringSheet: View {
     @State var model: ScoringSheet.Model
     @State var rowHeight = 80.0
     @State var rowWidth = 80.0
+    @State private var navigationPath: [Route] = []
 
     @State var scrollOffset: CGPoint = .zero
     @State private var scrollViewContentSize: CGSize = .zero
@@ -18,7 +22,7 @@ struct ScoringSheet: View {
 
     @FocusState var focusState: UUID?
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             ZStack {
                 Color(red: 223 / 255, green: 246 / 255, blue: 221 / 255)
                     .ignoresSafeArea()
@@ -36,24 +40,27 @@ struct ScoringSheet: View {
                 ToolbarItemGroup(placement: .keyboard) {
                     HStack(alignment: .center) {
                         Button(action: { model.sumOrMinus(currentFocus: focusState) }, label: {
-                            HStack {
                                 Image("mathematics")
                                     .resizable()
                                     .frame(width: 30, height: 30)
-                            }
-                            .frame(width: 60, height: 40)
-                        })
+                        }
+                        ).labelStyle(.iconOnly)
 
-                        Spacer()
+                            Spacer()
 
-                        Button("NEXT", systemImage: "arrow.forward.to.line") {
-                            DispatchQueue.main.async {
-                                withAnimation(.bouncy) {
-                                    focusState = model.getNextFocus(currentFocus: focusState)?.id
+                            Button("NEXT", systemImage: "arrow.forward.to.line") {
+                                DispatchQueue.main.async {
+                                    withAnimation(.bouncy) {
+                                        focusState = model.getNextFocus(currentFocus: focusState)?.id
+                                    }
                                 }
-                            }
-                        }.labelStyle(.titleAndIcon)
+                            }.labelStyle(.titleAndIcon)
                     }
+                }
+            }.navigationDestination(for: Route.self) { route in
+                switch route {
+                case .finalScoringView:
+                    FinalScoreView(model: FinalScoreView.Model(game: model.getGame()))
                 }
             }
         }
@@ -68,8 +75,9 @@ struct ScoringSheet: View {
     func leftHeaders() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack {
-                NavigationLink(destination: FinalScoreView()) {
-                    Button("Calculate Final Score") { }
+                    Button("Calculate Final Score") {
+                        navigationPath.append(.finalScoringView)
+                    }
                     .minimumScaleFactor(0.1)
                     .buttonStyle(.borderedProminent)
                     .shadow(radius: 2)
@@ -78,11 +86,6 @@ struct ScoringSheet: View {
                         height: rowHeight - 10
                     )
                     .background(Color.clear)
-                }
-                .frame(
-                    width: 90,
-                    height: rowHeight - 10
-                )
             }
             .frame(
                 width: 100,

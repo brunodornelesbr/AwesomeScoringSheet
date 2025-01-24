@@ -23,5 +23,13 @@ extension View {
     func hideKeyboard () {
         UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
+}
 
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        guard self.indices.contains(index) else {
+            return nil
+        }
+        return self[index]
+    }
 }
