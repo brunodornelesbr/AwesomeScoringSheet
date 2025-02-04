@@ -11,6 +11,8 @@
 		151B48D32D400FBC00E73378 /* DebugSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 151B48D22D400FBC00E73378 /* DebugSwift */; };
 		15A080822D4122E900A9E7FA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A080812D4122E900A9E7FA /* Extensions.swift */; };
 		15A080842D414F4A00A9E7FA /* FinalScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A080832D414F4A00A9E7FA /* FinalScoreView.swift */; };
+		15B9B67E2D523E5500A2F01F /* ConfettiSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 15B9B67D2D523E5500A2F01F /* ConfettiSwiftUI */; };
+		15B9B6802D5240A100A2F01F /* FinalScoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15B9B67F2D5240A100A2F01F /* FinalScoreViewModel.swift */; };
 		15CAFD8C2AFAD2D20079789C /* AwesomeScoringSheetApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */; };
 		15CAFD8E2AFAD2D20079789C /* ScoringSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */; };
 		15CAFD902AFAD2D30079789C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15CAFD8F2AFAD2D30079789C /* Assets.xcassets */; };
@@ -44,6 +46,7 @@
 		151304732B0E81500088E4AA /* ScoringSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringSheetViewModel.swift; sourceTree = "<group>"; };
 		15A080812D4122E900A9E7FA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		15A080832D414F4A00A9E7FA /* FinalScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreView.swift; sourceTree = "<group>"; };
+		15B9B67F2D5240A100A2F01F /* FinalScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalScoreViewModel.swift; sourceTree = "<group>"; };
 		15CAFD882AFAD2D20079789C /* AwesomeScoringSheet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AwesomeScoringSheet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwesomeScoringSheetApp.swift; sourceTree = "<group>"; };
 		15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoringSheet.swift; sourceTree = "<group>"; };
@@ -65,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15B9B67E2D523E5500A2F01F /* ConfettiSwiftUI in Frameworks */,
 				151B48D32D400FBC00E73378 /* DebugSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +116,7 @@
 				15CAFD8B2AFAD2D20079789C /* AwesomeScoringSheetApp.swift */,
 				15CAFD8D2AFAD2D20079789C /* ScoringSheet.swift */,
 				15A080832D414F4A00A9E7FA /* FinalScoreView.swift */,
+				15B9B67F2D5240A100A2F01F /* FinalScoreViewModel.swift */,
 				15A080812D4122E900A9E7FA /* Extensions.swift */,
 				15FD6EC92B04046A00D05AF4 /* ScoringSheet */,
 				15CAFD8F2AFAD2D30079789C /* Assets.xcassets */,
@@ -257,6 +262,7 @@
 			packageReferences = (
 				151B48D12D400FBC00E73378 /* XCRemoteSwiftPackageReference "DebugSwift" */,
 				15A0807F2D411B4600A9E7FA /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+				15B9B67C2D523E5500A2F01F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */,
 			);
 			productRefGroup = 15CAFD892AFAD2D20079789C /* Products */;
 			projectDirPath = "";
@@ -329,6 +335,7 @@
 				151304742B0E81500088E4AA /* ScoringSheetViewModel.swift in Sources */,
 				15FD6ECE2B0404A700D05AF4 /* Category.swift in Sources */,
 				15FD6ED02B0404BA00D05AF4 /* PlayerScore.swift in Sources */,
+				15B9B6802D5240A100A2F01F /* FinalScoreViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,6 +709,14 @@
 				minimumVersion = 0.58.2;
 			};
 		};
+		15B9B67C2D523E5500A2F01F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simibac/ConfettiSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -709,6 +724,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 151B48D12D400FBC00E73378 /* XCRemoteSwiftPackageReference "DebugSwift" */;
 			productName = DebugSwift;
+		};
+		15B9B67D2D523E5500A2F01F /* ConfettiSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 15B9B67C2D523E5500A2F01F /* XCRemoteSwiftPackageReference "ConfettiSwiftUI" */;
+			productName = ConfettiSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

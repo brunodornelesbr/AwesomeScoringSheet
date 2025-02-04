@@ -41,7 +41,7 @@ struct Game {
     func mockScores() -> Self {
         for category in categories {
             let playerScores: [PlayerScore] = players.compactMap {
-                return PlayerScore(player: $0, score: "\(Int.random(in: -2...10))")
+                return PlayerScore(player: $0, score: "\(Int.random(in: -2...15))")
             }
             categories[safe: categories.firstIndex(of: category) ?? -1]?.playerScores = playerScores
         }

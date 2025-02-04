@@ -19,7 +19,7 @@ struct AwesomeScoringSheetApp: App {
                            Player(name: "Player 6", chosenColor: .red)
                           ]
 
-            var categories = [Category(name: "TR", odd: true),
+            let categories = [Category(name: "TR", odd: true),
                               Category(name: "AWARDS", odd: false),
                               Category(name: "MILESTONES", odd: true),
                                                 Category(name: "Two", odd: false),

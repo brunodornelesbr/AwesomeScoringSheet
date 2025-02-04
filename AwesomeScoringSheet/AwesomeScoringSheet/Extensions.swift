@@ -33,3 +33,10 @@ extension Array {
         return self[index]
     }
 }
+
+extension Array where Element: Hashable {
+    func isUnique() -> Bool {
+            var seen = Set<Element>()
+            return allSatisfy { seen.insert($0).inserted }
+    }
+}
