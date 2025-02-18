@@ -82,7 +82,7 @@ extension FinalScoreView {
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
                             ForEach($secondPlace) { playerScore in
-                                ScoringSheet.PlayerHeader(player: playerScore.player)
+                                ScoringSheetView.PlayerHeader(player: playerScore.player)
                             }
                         }
                             Rectangle()
@@ -98,7 +98,7 @@ extension FinalScoreView {
                         }
                         HStack(spacing: 0) {
                             ForEach($firstPlace) { playerScore in
-                                ScoringSheet.PlayerHeader(player: playerScore.player)
+                                ScoringSheetView.PlayerHeader(player: playerScore.player)
                             }
                         }
                             Rectangle()
@@ -108,7 +108,7 @@ extension FinalScoreView {
                     VStack(spacing: 0) {
                         HStack(spacing: 0) {
                             ForEach($thirdPlace) { playerScore in
-                                ScoringSheet.PlayerHeader(player: playerScore.player)
+                                ScoringSheetView.PlayerHeader(player: playerScore.player)
                             }
                         }
                             Rectangle()

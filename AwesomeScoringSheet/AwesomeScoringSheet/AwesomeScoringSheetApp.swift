@@ -27,12 +27,12 @@ struct AwesomeScoringSheetApp: App {
                               Category(name: "CITIES", odd: false),
                               Category(name: "CARDS", odd: true)
             ]
-            let model = ScoringSheet.Model(
-                players: players, categories: categories)
+            let model = ScoringSheetView.Model(
+                game: Game(players: players, categories: categories))
 
 //            FinalScoreView(model: FinalScoreView.Model(game: Game(players: players, categories: categories).mockScores()))
 
-            ScoringSheet(model: model)
+            ScoringSheetView(model: model)
         }
     }
 }

@@ -10,17 +10,17 @@ enum Route {
     case finalScoringView
 }
 
-struct ScoringSheet: View {
-    @State var model: ScoringSheet.Model
-    @State var rowHeight = 80.0
-    @State var rowWidth = 80.0
+struct ScoringSheetView: View {
+    @State var model: ScoringSheetView.Model
+    @State private var rowHeight = 80.0
+    @State private var rowWidth = 80.0
     @State private var navigationPath: [Route] = []
 
-    @State var scrollOffset: CGPoint = .zero
+    @State private var scrollOffset: CGPoint = .zero
     @State private var scrollViewContentSize: CGSize = .zero
     @Namespace var scrollSpace
 
-    @FocusState var focusState: UUID?
+    @FocusState private var focusState: UUID?
     var body: some View {
         NavigationStack(path: $navigationPath) {
             ZStack {
@@ -36,6 +36,8 @@ struct ScoringSheet: View {
                     }
                 }
             }
+            .navigationTitle("Game Name")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .keyboard) {
                     HStack(alignment: .center) {
@@ -57,6 +59,14 @@ struct ScoringSheet: View {
                             }.labelStyle(.titleAndIcon)
                     }
                 }
+
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Finish!") {
+                        navigationPath.append(.finalScoringView)
+                    }
+                    .font(.callout)
+                    .fontWeight(.bold)
+                }
             }.navigationDestination(for: Route.self) { route in
                 switch route {
                 case .finalScoringView:
@@ -75,17 +85,7 @@ struct ScoringSheet: View {
     func leftHeaders() -> some View {
         VStack(alignment: .leading, spacing: 0) {
             ZStack {
-                    Button("Calculate Final Score") {
-                        navigationPath.append(.finalScoringView)
-                    }
-                    .minimumScaleFactor(0.1)
-                    .buttonStyle(.borderedProminent)
-                    .shadow(radius: 2)
-                    .frame(
-                        width: 90,
-                        height: rowHeight - 10
-                    )
-                    .background(Color.clear)
+                Text("")
             }
             .frame(
                 width: 100,
@@ -171,7 +171,7 @@ struct ScoringSheet: View {
 
 }
 
-extension ScoringSheet {
+extension ScoringSheetView {
     struct PlayerHeader: View {
         @Binding var player: Player
         var body: some View {
@@ -192,7 +192,7 @@ extension ScoringSheet {
     }
 }
 
-extension ScoringSheet {
+extension ScoringSheetView {
     struct CategoryView: View {
         @Binding var category: Category
         @FocusState var focusState: UUID?
@@ -233,7 +233,7 @@ extension ScoringSheet {
     }
 }
 
-extension ScoringSheet {
+extension ScoringSheetView {
     struct CategoryHeader: View {
         @Binding var category: Category
         var body: some View {
@@ -268,9 +268,9 @@ extension ScoringSheet {
                                             Category(name: "Two", odd: false),
                           Category(name: "Category 1", odd: true),
                                             Category(name: "Two", odd: false) ]
-        let model = ScoringSheet.Model(
-            players: players, categories: categories)
+        let model = ScoringSheetView.Model(
+            game: Game(players: players, categories: categories))
 
-        ScoringSheet(model: model)
+        ScoringSheetView(model: model)
     }
  }

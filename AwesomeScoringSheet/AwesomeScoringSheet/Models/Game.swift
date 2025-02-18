@@ -1,24 +1,17 @@
 //
-//  PlayerScore.swift
+//  Game.swift
 //  AwesomeScoringSheet
 //
-//  Created by Bruno on 14/11/23.
+//  Created by Bruno on 18/02/25.
 //
 
 import Foundation
 
-struct PlayerScore: Identifiable, Equatable {
-    var id = UUID()
-    var player: Player
-    var score: String = ""
-    var intScore: Int { Int(score) ?? 0 }
-    var animate = false
-}
-
 struct Game {
     var players: [Player]
     var categories: [Category]
-
+    var name: String = "Example Game"
+    
     func scores() -> [PlayerScore] {
         var finalPlayersScore: [PlayerScore] = []
         for player in players {
@@ -37,7 +30,8 @@ struct Game {
         }
         return finalPlayersScore
     }
-
+    
+    #if DEBUG
     func mockScores() -> Self {
         for category in categories {
             let playerScores: [PlayerScore] = players.compactMap {
@@ -47,4 +41,5 @@ struct Game {
         }
         return self
     }
+    #endif
 }

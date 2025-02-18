@@ -7,17 +7,18 @@
 
 import SwiftUI
 import Combine
-extension ScoringSheet {
+extension ScoringSheetView {
     @Observable class Model {
         var players: [Player] = []
         var categories: [Category] = []
-
-        init(players: [Player], categories: [Category]) {
-            self.players = players
-            for category in categories {
+        var gameName = ""
+        init(game: Game) {
+            players = game.players
+            for category in game.categories {
                 category.createPlayerScores(players)
             }
-            self.categories = categories
+            categories = game.categories
+            gameName = game.name
         }
 
         func getNextFocus(currentFocus: UUID?) -> PlayerScore? {
